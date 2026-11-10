@@ -1,5 +1,9 @@
 # Lease · Decision Lab
 
+> **Start here: [Results explainer and executive summary](docs/EXPLAINER.md)**
+>
+> The story of what we tested, what we learned, and how prediction, calibration and uncertainty shaped the final decisions.
+
 **Keep the current lease offer, change it, or ask for more evidence?**
 
 A local decision prototype by Krystof. It connects customer payments, expected contribution and the evidence behind a recommendation. Customers, pre-approval, responses and economics are authored fiction.

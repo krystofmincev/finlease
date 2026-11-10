@@ -1,0 +1,17 @@
+# Runtime exclusions. PUBLIC-FILES.sha256 defines the reviewed candidate scope.
+.venv/
+.local/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+ui/node_modules/
+*.egg-info/
+.env
+.env.*
+*.ckpt
+*.pt
+*.pth
+*.safetensors
+*.log
+.DS_Store
+# ui/dist is intentionally retained for viewing the saved product.

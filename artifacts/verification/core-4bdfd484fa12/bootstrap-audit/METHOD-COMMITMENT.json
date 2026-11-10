@@ -1,0 +1,104 @@
+{
+  "advisory_enabled": false,
+  "baseline_run": "core-4bdfd484fa12",
+  "conditional_final_recipe": {
+    "namespace": "gbdt-bootstrap-confirmation-v1",
+    "seed": 20261112
+  },
+  "coverage_recipe": {
+    "namespace": "gbdt-bootstrap-coverage-v1-{family}-{replicate}",
+    "seeds": [
+      820000,
+      820001,
+      820002,
+      820003,
+      820004,
+      820005,
+      820006,
+      820007,
+      820008,
+      820009,
+      820010,
+      820011,
+      820012,
+      820013,
+      820014,
+      820015,
+      820016,
+      820017,
+      820018,
+      820019,
+      820020,
+      820021,
+      820022,
+      820023,
+      820024,
+      820025,
+      820026,
+      820027,
+      820028,
+      820029
+    ]
+  },
+  "family_order": [
+    "smooth",
+    "nonlinear"
+  ],
+  "max_scientific_fits": 33856,
+  "member_coordinates": [
+    "root",
+    "family_index",
+    "stream_index"
+  ],
+  "member_counts": [
+    32,
+    128,
+    256,
+    512
+  ],
+  "member_root": 810000,
+  "method": "whole-applicant-percentile-bootstrap-fixed-recipe-v1",
+  "offers": [
+    "r800",
+    "r900",
+    "r1000"
+  ],
+  "paired_delta_q05_tolerance_cents": 200.0,
+  "point_freeze_sha256": "364e0a5f0e855d25484db854ae265f0a7a48ae4bcb1b322e53b0c57ac5b8cf28",
+  "probability_q05_tolerance": 0.02,
+  "probes": [
+    {
+      "business_age_years": 12.0,
+      "existing_debt_burden": 0.18,
+      "monthly_turnover_cents": 3000000,
+      "segment": "established"
+    },
+    {
+      "business_age_years": 1.5,
+      "existing_debt_burden": 0.25,
+      "monthly_turnover_cents": 1800000,
+      "segment": "new"
+    },
+    {
+      "business_age_years": 5.0,
+      "existing_debt_burden": 0.18,
+      "monthly_turnover_cents": 2500000,
+      "segment": "restart"
+    }
+  ],
+  "proposal_sha256": "ecedee572daeb7d140cbba4a3a45164918c1b909fdc8cc19b5cfe9b27eacf408",
+  "quantiles": "linear",
+  "rss_stop_bytes": 1500000000,
+  "rss_target_bytes": 1073741824,
+  "scenario_versions": {
+    "nonlinear": "complex-economic-mixture-v1",
+    "smooth": "smooth-logistic-v1"
+  },
+  "script_sha256": "4fdbb6ddc10de1d0662965c5fa9add9676822446fbee47077276d8ff0567ae52",
+  "source_sha256": "1ec33f9b4156ba16945c6221864c66635dbf4c134a882e7b183f69cdeed7c9c7",
+  "streams": [
+    0,
+    1
+  ],
+  "wall_seconds": 600
+}

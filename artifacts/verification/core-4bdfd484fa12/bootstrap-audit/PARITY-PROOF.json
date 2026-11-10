@@ -1,0 +1,34 @@
+{
+  "families": {
+    "nonlinear": {
+      "distinct_prediction_vectors_per_stream": [
+        512,
+        512
+      ],
+      "exact_incumbent_contrast_zero": true,
+      "first_member_exact_reproduction": true,
+      "max_supported_delta_q05_difference_eur": 15.180563216065202,
+      "max_supported_probability_q05_difference": 0.014847282080097779,
+      "unique_resamples_per_stream": [
+        512,
+        512
+      ]
+    },
+    "smooth": {
+      "distinct_prediction_vectors_per_stream": [
+        512,
+        512
+      ],
+      "exact_incumbent_contrast_zero": true,
+      "first_member_exact_reproduction": true,
+      "max_supported_delta_q05_difference_eur": 9.04810219211966,
+      "max_supported_probability_q05_difference": 0.010187508890177277,
+      "unique_resamples_per_stream": [
+        512,
+        512
+      ]
+    }
+  },
+  "source_sha256": "1ec33f9b4156ba16945c6221864c66635dbf4c134a882e7b183f69cdeed7c9c7",
+  "verification_fits": 2
+}

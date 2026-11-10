@@ -1,0 +1,607 @@
+{
+  "beta": {
+    "cells": [
+      {
+        "accepted": 273,
+        "exposures": 317,
+        "offer_id": "r800",
+        "pending": 0,
+        "refused": 44,
+        "segment": "new"
+      },
+      {
+        "accepted": 231,
+        "exposures": 369,
+        "offer_id": "r900",
+        "pending": 0,
+        "refused": 138,
+        "segment": "new"
+      },
+      {
+        "accepted": 143,
+        "exposures": 342,
+        "offer_id": "r1000",
+        "pending": 0,
+        "refused": 199,
+        "segment": "new"
+      },
+      {
+        "accepted": 310,
+        "exposures": 345,
+        "offer_id": "r800",
+        "pending": 0,
+        "refused": 35,
+        "segment": "growing"
+      },
+      {
+        "accepted": 283,
+        "exposures": 399,
+        "offer_id": "r900",
+        "pending": 0,
+        "refused": 116,
+        "segment": "growing"
+      },
+      {
+        "accepted": 209,
+        "exposures": 376,
+        "offer_id": "r1000",
+        "pending": 0,
+        "refused": 167,
+        "segment": "growing"
+      },
+      {
+        "accepted": 456,
+        "exposures": 498,
+        "offer_id": "r800",
+        "pending": 0,
+        "refused": 42,
+        "segment": "established"
+      },
+      {
+        "accepted": 383,
+        "exposures": 460,
+        "offer_id": "r900",
+        "pending": 0,
+        "refused": 77,
+        "segment": "established"
+      },
+      {
+        "accepted": 305,
+        "exposures": 454,
+        "offer_id": "r1000",
+        "pending": 0,
+        "refused": 149,
+        "segment": "established"
+      },
+      {
+        "accepted": 15,
+        "exposures": 20,
+        "offer_id": "r800",
+        "pending": 0,
+        "refused": 5,
+        "segment": "restart"
+      },
+      {
+        "accepted": 15,
+        "exposures": 20,
+        "offer_id": "r900",
+        "pending": 0,
+        "refused": 5,
+        "segment": "restart"
+      },
+      {
+        "accepted": 0,
+        "exposures": 0,
+        "offer_id": "r1000",
+        "pending": 0,
+        "refused": 0,
+        "segment": "restart"
+      }
+    ]
+  },
+  "case_presets": [
+    {
+      "business_age_years": 1.5,
+      "existing_debt_burden": 0.15,
+      "monthly_turnover_cents": 2500000,
+      "segment": "new"
+    },
+    {
+      "business_age_years": 5.5,
+      "existing_debt_burden": 0.15,
+      "monthly_turnover_cents": 2500000,
+      "segment": "growing"
+    },
+    {
+      "business_age_years": 16.5,
+      "existing_debt_burden": 0.16,
+      "monthly_turnover_cents": 2500000,
+      "segment": "established"
+    },
+    {
+      "business_age_years": 8.5,
+      "existing_debt_burden": 0.15,
+      "monthly_turnover_cents": 2700000,
+      "segment": "restart"
+    }
+  ],
+  "laplace": {
+    "default": {
+      "diagnostics": {
+        "coefficients": 8,
+        "condition_number": 154.6265813157088,
+        "converged": true,
+        "gradient_norm": 1.2499771204210752e-08,
+        "initial_gradient_norm": 1.2499771204210752e-08,
+        "iterations": 5,
+        "message": "A bad approximation caused failure to predict improvement.",
+        "min_precision_eigenvalue": 5.699163821312993,
+        "newton_refinement_steps": 0,
+        "optimizer_success": false,
+        "reference_check": "not_checked",
+        "rows": 3600
+      },
+      "mode": [
+        0.812144448421562,
+        0.13751832550784776,
+        0.2833318487038442,
+        -0.538792940745709,
+        -0.812342206862954,
+        0.3590636453999669,
+        0.7860895153300063,
+        -0.08313895470367229
+      ],
+      "precision_cholesky": [
+        [
+          24.156004998466727,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -3.613470039539097,
+          22.82319153189572,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -2.018887541598363,
+          -1.1420380016742,
+          23.854138777833107,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.7166011112985005,
+          2.431390666579109,
+          1.1607385196836604,
+          24.381600804952,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          7.577806850350409,
+          1.5015883525303715,
+          2.119142776364175,
+          -3.422514414019369,
+          22.143223441409564,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          7.9121645075740625,
+          -2.511909775298979,
+          0.002015519019964387,
+          -0.31018717542477603,
+          0.39203755440692256,
+          11.048775724053035,
+          0.0,
+          0.0
+        ],
+        [
+          7.739360206185385,
+          9.715377216664074,
+          0.06724376793314303,
+          0.14171474387384456,
+          0.16391411730122366,
+          -3.335335875981731,
+          4.64768179171939,
+          0.0
+        ],
+        [
+          0.2809177793041307,
+          0.08804598267950811,
+          -0.003383040376468696,
+          0.013641571780995272,
+          -0.24442637738157685,
+          -0.17209522461626678,
+          -0.7670834929307551,
+          2.4763521267136874
+        ]
+      ],
+      "prior_sd": 3.0,
+      "transform": {
+        "mean": [
+          8.649334919114246,
+          10.138302781021904,
+          0.16872123238787923,
+          -0.0022222222222222222
+        ],
+        "scale": [
+          7.1324565037529,
+          0.6391652980369134,
+          0.1015071252483022,
+          0.8082873220963778
+        ],
+        "version": "age-logturnover-preexistingburden-rate-segment-v1"
+      }
+    },
+    "strong": {
+      "diagnostics": {
+        "coefficients": 8,
+        "condition_number": 146.28745545503293,
+        "converged": true,
+        "gradient_norm": 1.2277192484866362e-08,
+        "initial_gradient_norm": 1.2277192484866362e-08,
+        "iterations": 5,
+        "message": "A bad approximation caused failure to predict improvement.",
+        "min_precision_eigenvalue": 6.028276258215154,
+        "newton_refinement_steps": 0,
+        "optimizer_success": false,
+        "reference_check": "not_checked",
+        "rows": 3600
+      },
+      "mode": [
+        0.8145818039673125,
+        0.13985329667518578,
+        0.283029148758631,
+        -0.538256014497429,
+        -0.8114069445688944,
+        0.356668237896718,
+        0.7792642552922651,
+        -0.081646114019841
+      ],
+      "precision_cholesky": [
+        [
+          24.169402996924767,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -3.612681324337912,
+          22.833516747037493,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -2.0168512483285785,
+          -1.1409302490237663,
+          23.868004548999014,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.713680865803741,
+          2.4291306137658224,
+          1.1588669507186418,
+          24.39578108530987,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          7.569488385432809,
+          1.4982788320468603,
+          2.116751627751381,
+          -3.41686332396408,
+          22.16201587882819,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          7.911884612475789,
+          -2.5133033744247752,
+          0.0019572714460338024,
+          -0.30982267112664913,
+          0.3924946739348167,
+          11.068211876721138,
+          0.0,
+          0.0
+        ],
+        [
+          7.7421478537500255,
+          9.714686825407822,
+          0.0668562973715773,
+          0.142374554228085,
+          0.16500330409820888,
+          -3.330240567459205,
+          4.702028697564733,
+          0.0
+        ],
+        [
+          0.2803596179676554,
+          0.08767384979104728,
+          -0.003483142237591555,
+          0.013802194834094695,
+          -0.24361922184321366,
+          -0.17147482254596272,
+          -0.7560345718441905,
+          2.544353742925706
+        ]
+      ],
+      "prior_sd": 1.5,
+      "transform": {
+        "mean": [
+          8.649334919114246,
+          10.138302781021904,
+          0.16872123238787923,
+          -0.0022222222222222222
+        ],
+        "scale": [
+          7.1324565037529,
+          0.6391652980369134,
+          0.1015071252483022,
+          0.8082873220963778
+        ],
+        "version": "age-logturnover-preexistingburden-rate-segment-v1"
+      }
+    },
+    "weak": {
+      "diagnostics": {
+        "coefficients": 8,
+        "condition_number": 156.86326202006697,
+        "converged": true,
+        "gradient_norm": 1.2555258138702285e-08,
+        "initial_gradient_norm": 1.2555258138702285e-08,
+        "iterations": 5,
+        "message": "A bad approximation caused failure to predict improvement.",
+        "min_precision_eigenvalue": 5.616909856351665,
+        "newton_refinement_steps": 0,
+        "optimizer_success": false,
+        "reference_check": "not_checked",
+        "rows": 3600
+      },
+      "mode": [
+        0.811510930798428,
+        0.13691527871633427,
+        0.28340753611920366,
+        -0.5389274603110216,
+        -0.8125769008252094,
+        0.35967976931406553,
+        0.78784478568385,
+        -0.08350737536978252
+      ],
+      "precision_cholesky": [
+        [
+          24.15264818705593,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -3.6136504762106605,
+          22.820639229090563,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -2.019396491530089,
+          -1.1423177514323957,
+          23.850665335614682,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.7173273148283585,
+          2.4319527203530704,
+          1.1612068926449715,
+          24.378047551072754,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          7.579883451077459,
+          1.5024166241778547,
+          2.1197397506334155,
+          -3.4239256980315362,
+          22.13851632933695,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          7.912231494405114,
+          -2.5115595545652254,
+          0.002029524099511802,
+          -0.3102767632962909,
+          0.3919280730026031,
+          11.043907796440852,
+          0.0,
+          0.0
+        ],
+        [
+          7.738650493973376,
+          9.715548053530389,
+          0.06733803687231886,
+          0.1415552878995828,
+          0.1636490351147808,
+          -3.3366061450998763,
+          4.633983304676054,
+          0.0
+        ],
+        [
+          0.2810597432581619,
+          0.08814065627842378,
+          -0.003357396236071557,
+          0.013600559638614769,
+          -0.244631202990148,
+          -0.17225195035433855,
+          -0.7699122060574762,
+          2.459039509528335
+        ]
+      ],
+      "prior_sd": 6.0,
+      "transform": {
+        "mean": [
+          8.649334919114246,
+          10.138302781021904,
+          0.16872123238787923,
+          -0.0022222222222222222
+        ],
+        "scale": [
+          7.1324565037529,
+          0.6391652980369134,
+          0.1015071252483022,
+          0.8082873220963778
+        ],
+        "version": "age-logturnover-preexistingburden-rate-segment-v1"
+      }
+    }
+  },
+  "provenance": {
+    "blueprint_sha256": "e6e8d659751eefca3b160d82e21bfb06c3fb51bd1bf153a1a82fc74f98f5cf1d",
+    "blueprint_version": "1.1",
+    "config_sha256": "b7195d2a46977c14a1852d3cfeb2e105feb0e25b159d7e16f2499fdd57b1ec3d",
+    "currency": "EUR",
+    "data_sha256": "4bd515644f02c43ca20f4e4a5049be4d05a6358ea993f07fa7f4deec28436c70",
+    "money_unit": "cent",
+    "origin": "authored-fictional-simulation",
+    "policy_version": "fictional-policy-1.0",
+    "run_id": "core-01e96c4ee2b1",
+    "schema_version": "1.1",
+    "seed": 20261109,
+    "simulation_only": true,
+    "source_sha256": "0a36445804c4ed029ae8e3a300227afab84da750f66b293f93659177260d469e"
+  },
+  "stages": [
+    "0: contracts and first offline artifact",
+    "1: exact cockpit; focused checks and actual browser review",
+    "2: MAP/Laplace, independent references, held-out and repeated-data coverage",
+    "3: exact and pooled matched-feedback replay",
+    "4: adverse scenarios and evidence export; independent review recorded in docs/reviews"
+  ],
+  "support": {
+    "business_age_years": {
+      "maximum": 24.992752386161424,
+      "minimum": 0.20320471772338014
+    },
+    "by_segment": {
+      "established": {
+        "business_age_years": {
+          "maximum": 24.992752386161424,
+          "minimum": 8.000940587268278
+        },
+        "existing_debt_burden": {
+          "maximum": 0.6472429442618898,
+          "minimum": 0.0021621463227821723
+        },
+        "monthly_turnover_cents": {
+          "maximum": 15000000.0,
+          "minimum": 500000.0
+        }
+      },
+      "growing": {
+        "business_age_years": {
+          "maximum": 7.984301545613199,
+          "minimum": 3.0073784242278667
+        },
+        "existing_debt_burden": {
+          "maximum": 0.5612797855598058,
+          "minimum": 0.003418191312698331
+        },
+        "monthly_turnover_cents": {
+          "maximum": 15000000.0,
+          "minimum": 500000.0
+        }
+      },
+      "new": {
+        "business_age_years": {
+          "maximum": 2.999876164326081,
+          "minimum": 0.20320471772338014
+        },
+        "existing_debt_burden": {
+          "maximum": 0.5510849881393051,
+          "minimum": 0.008151825745773894
+        },
+        "monthly_turnover_cents": {
+          "maximum": 15000000.0,
+          "minimum": 500000.0
+        }
+      },
+      "restart": {
+        "business_age_years": {
+          "maximum": 19.233141686501725,
+          "minimum": 0.7032512331576376
+        },
+        "existing_debt_burden": {
+          "maximum": 0.3824617577549001,
+          "minimum": 0.016677586728414122
+        },
+        "monthly_turnover_cents": {
+          "maximum": 8684464.0,
+          "minimum": 533645.0
+        }
+      }
+    },
+    "existing_debt_burden": {
+      "maximum": 0.6472429442618898,
+      "minimum": 0.0021621463227821723
+    },
+    "monthly_turnover_cents": {
+      "maximum": 15000000.0,
+      "minimum": 500000.0
+    },
+    "observed_card_ids": [
+      "nov-2026"
+    ],
+    "observed_policy_versions": [
+      "fictional-policy-1.0"
+    ],
+    "observed_rate_bps": [
+      800,
+      900,
+      1000
+    ]
+  }
+}

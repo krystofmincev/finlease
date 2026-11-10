@@ -1,0 +1,2785 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Lease Decision Lab \u00b7 fictional simulation",
+    "version": "1.2"
+  },
+  "paths": {
+    "/api/meta": {
+      "get": {
+        "summary": "Metadata",
+        "operationId": "metadata_api_meta_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Metadata"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/decision": {
+      "post": {
+        "summary": "Decision",
+        "operationId": "decision_api_decision_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DecisionRequest-Input"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DecisionResult"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/report": {
+      "get": {
+        "summary": "Report",
+        "operationId": "report_api_report_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EvaluationReport"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/replays": {
+      "get": {
+        "summary": "Replays",
+        "operationId": "replays_api_replays_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplayReport"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/challenger": {
+      "get": {
+        "summary": "Challenger",
+        "operationId": "challenger_api_challenger_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChallengerReport"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AuditFinding": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "detail": {
+            "type": "string",
+            "title": "Detail"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "name",
+          "status",
+          "detail"
+        ],
+        "title": "AuditFinding"
+      },
+      "CalibrationBin": {
+        "properties": {
+          "lower": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Lower"
+          },
+          "upper": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Upper"
+          },
+          "count": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Count"
+          },
+          "prediction": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 1.0,
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Prediction"
+          },
+          "observed": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 1.0,
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Observed"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "lower",
+          "upper",
+          "count",
+          "prediction",
+          "observed"
+        ],
+        "title": "CalibrationBin"
+      },
+      "ChallengerInput": {
+        "properties": {
+          "family": {
+            "type": "string",
+            "enum": [
+              "smooth",
+              "nonlinear"
+            ],
+            "title": "Family"
+          },
+          "context_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Context Ids"
+          },
+          "freeze_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Freeze Sha256"
+          },
+          "comparison_config_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Comparison Config Sha256"
+          },
+          "feature_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Feature Sha256"
+          },
+          "context_matrix_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Context Matrix Sha256"
+          },
+          "context_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Context Sha256"
+          },
+          "confirmation_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Confirmation Sha256"
+          },
+          "fit_seconds": {
+            "type": "number",
+            "title": "Fit Seconds"
+          },
+          "prediction_seconds": {
+            "type": "number",
+            "title": "Prediction Seconds"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "family",
+          "context_ids",
+          "freeze_sha256",
+          "comparison_config_sha256",
+          "feature_sha256",
+          "context_matrix_sha256",
+          "context_sha256",
+          "confirmation_sha256",
+          "fit_seconds",
+          "prediction_seconds"
+        ],
+        "title": "ChallengerInput"
+      },
+      "ChallengerReport": {
+        "properties": {
+          "provenance": {
+            "$ref": "#/components/schemas/Provenance"
+          },
+          "freeze_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Freeze Sha256"
+          },
+          "comparison_config_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Comparison Config Sha256"
+          },
+          "kind": {
+            "type": "string",
+            "const": "tabular-transformer-point-benchmark",
+            "title": "Kind"
+          },
+          "library_version": {
+            "type": "string",
+            "title": "Library Version"
+          },
+          "torch_version": {
+            "type": "string",
+            "title": "Torch Version"
+          },
+          "checkpoint_repo": {
+            "type": "string",
+            "title": "Checkpoint Repo"
+          },
+          "checkpoint_revision": {
+            "type": "string",
+            "title": "Checkpoint Revision"
+          },
+          "checkpoint_filename": {
+            "type": "string",
+            "title": "Checkpoint Filename"
+          },
+          "checkpoint_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Checkpoint Sha256"
+          },
+          "license_url": {
+            "type": "string",
+            "title": "License Url"
+          },
+          "device": {
+            "type": "string",
+            "const": "cpu",
+            "title": "Device"
+          },
+          "context_applicants": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Context Applicants"
+          },
+          "estimators": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Estimators"
+          },
+          "uncertainty_method": {
+            "type": "string",
+            "const": "not_estimated",
+            "title": "Uncertainty Method"
+          },
+          "inputs": {
+            "items": {
+              "$ref": "#/components/schemas/ChallengerInput"
+            },
+            "type": "array",
+            "title": "Inputs"
+          },
+          "prediction": {
+            "items": {
+              "$ref": "#/components/schemas/PredictionScore"
+            },
+            "type": "array",
+            "title": "Prediction"
+          },
+          "policies": {
+            "items": {
+              "$ref": "#/components/schemas/PolicyScore"
+            },
+            "type": "array",
+            "title": "Policies"
+          },
+          "findings": {
+            "items": {
+              "$ref": "#/components/schemas/AuditFinding"
+            },
+            "type": "array",
+            "title": "Findings"
+          },
+          "elapsed_seconds": {
+            "type": "number",
+            "title": "Elapsed Seconds"
+          },
+          "peak_rss_bytes": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Peak Rss Bytes"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "provenance",
+          "freeze_sha256",
+          "comparison_config_sha256",
+          "kind",
+          "library_version",
+          "torch_version",
+          "checkpoint_repo",
+          "checkpoint_revision",
+          "checkpoint_filename",
+          "checkpoint_sha256",
+          "license_url",
+          "device",
+          "context_applicants",
+          "estimators",
+          "uncertainty_method",
+          "inputs",
+          "prediction",
+          "policies",
+          "findings",
+          "elapsed_seconds",
+          "peak_rss_bytes"
+        ],
+        "title": "ChallengerReport"
+      },
+      "Choice": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "recommend",
+              "retain",
+              "review"
+            ],
+            "title": "Status"
+          },
+          "offer_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Offer Id"
+          },
+          "reason": {
+            "type": "string",
+            "title": "Reason"
+          },
+          "immediate_review_cost_cents": {
+            "type": "integer",
+            "title": "Immediate Review Cost Cents",
+            "default": 0
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "status",
+          "offer_id",
+          "reason",
+          "immediate_review_cost_cents"
+        ],
+        "title": "Choice"
+      },
+      "Context-Input": {
+        "properties": {
+          "segment": {
+            "type": "string",
+            "enum": [
+              "new",
+              "growing",
+              "established",
+              "restart"
+            ],
+            "title": "Segment",
+            "default": "established"
+          },
+          "business_age_years": {
+            "type": "number",
+            "maximum": 60.0,
+            "minimum": 0.0,
+            "title": "Business Age Years",
+            "default": 12.0
+          },
+          "monthly_turnover_cents": {
+            "type": "integer",
+            "maximum": 200000000.0,
+            "minimum": 10000.0,
+            "title": "Monthly Turnover Cents",
+            "default": 3000000
+          },
+          "existing_debt_burden": {
+            "type": "number",
+            "maximum": 2.0,
+            "minimum": 0.0,
+            "title": "Existing Debt Burden",
+            "default": 0.18
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "Context"
+      },
+      "Context-Output": {
+        "properties": {
+          "segment": {
+            "type": "string",
+            "enum": [
+              "new",
+              "growing",
+              "established",
+              "restart"
+            ],
+            "title": "Segment",
+            "default": "established"
+          },
+          "business_age_years": {
+            "type": "number",
+            "maximum": 60.0,
+            "minimum": 0.0,
+            "title": "Business Age Years",
+            "default": 12.0
+          },
+          "monthly_turnover_cents": {
+            "type": "integer",
+            "maximum": 200000000.0,
+            "minimum": 10000.0,
+            "title": "Monthly Turnover Cents",
+            "default": 3000000
+          },
+          "existing_debt_burden": {
+            "type": "number",
+            "maximum": 2.0,
+            "minimum": 0.0,
+            "title": "Existing Debt Burden",
+            "default": 0.18
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "segment",
+          "business_age_years",
+          "monthly_turnover_cents",
+          "existing_debt_burden"
+        ],
+        "title": "Context"
+      },
+      "CoverageRow": {
+        "properties": {
+          "family": {
+            "type": "string",
+            "title": "Family"
+          },
+          "model": {
+            "type": "string",
+            "title": "Model"
+          },
+          "probe": {
+            "type": "string",
+            "title": "Probe"
+          },
+          "target": {
+            "type": "string",
+            "title": "Target"
+          },
+          "support": {
+            "type": "string",
+            "title": "Support"
+          },
+          "seeds": {
+            "type": "integer",
+            "title": "Seeds"
+          },
+          "covered": {
+            "type": "integer",
+            "title": "Covered"
+          },
+          "coverage": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Coverage"
+          },
+          "interval_low": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Interval Low"
+          },
+          "interval_high": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Interval High"
+          },
+          "mean_width": {
+            "type": "number",
+            "title": "Mean Width"
+          },
+          "target_standard_error": {
+            "type": "number",
+            "title": "Target Standard Error"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "family",
+          "model",
+          "probe",
+          "target",
+          "support",
+          "seeds",
+          "covered",
+          "coverage",
+          "interval_low",
+          "interval_high",
+          "mean_width",
+          "target_standard_error"
+        ],
+        "title": "CoverageRow"
+      },
+      "DatasetIdentity": {
+        "properties": {
+          "family": {
+            "type": "string",
+            "title": "Family"
+          },
+          "data_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Data Sha256"
+          },
+          "split_ids_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Split Ids Sha256"
+          },
+          "applicants": {
+            "type": "integer",
+            "title": "Applicants"
+          },
+          "fit": {
+            "type": "integer",
+            "title": "Fit"
+          },
+          "diagnostic": {
+            "type": "integer",
+            "title": "Diagnostic"
+          },
+          "selection": {
+            "type": "integer",
+            "title": "Selection"
+          },
+          "test": {
+            "type": "integer",
+            "title": "Test"
+          },
+          "confirmation_seed": {
+            "type": "integer",
+            "title": "Confirmation Seed"
+          },
+          "confirmation_namespace": {
+            "type": "string",
+            "title": "Confirmation Namespace"
+          },
+          "confirmation_data_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Confirmation Data Sha256"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "family",
+          "data_sha256",
+          "split_ids_sha256",
+          "applicants",
+          "fit",
+          "diagnostic",
+          "selection",
+          "test",
+          "confirmation_seed",
+          "confirmation_namespace",
+          "confirmation_data_sha256"
+        ],
+        "title": "DatasetIdentity"
+      },
+      "DecisionRequest-Input": {
+        "properties": {
+          "context": {
+            "$ref": "#/components/schemas/Context-Input"
+          },
+          "finance": {
+            "$ref": "#/components/schemas/Finance-Input"
+          },
+          "method": {
+            "type": "string",
+            "enum": [
+              "beta",
+              "laplace"
+            ],
+            "title": "Method",
+            "default": "beta"
+          },
+          "prior": {
+            "type": "string",
+            "enum": [
+              "default",
+              "weak",
+              "strong"
+            ],
+            "title": "Prior",
+            "default": "default"
+          },
+          "card_id": {
+            "type": "string",
+            "enum": [
+              "nov-2026",
+              "dec-2026"
+            ],
+            "title": "Card Id",
+            "default": "nov-2026"
+          },
+          "as_of": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+            "title": "As Of",
+            "default": "2026-11-09"
+          },
+          "draw_count": {
+            "type": "integer",
+            "enum": [
+              4096,
+              16384
+            ],
+            "title": "Draw Count",
+            "default": 4096
+          },
+          "draw_seed": {
+            "type": "integer",
+            "maximum": 2147483647.0,
+            "minimum": 0.0,
+            "title": "Draw Seed",
+            "default": 8128
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "DecisionRequest"
+      },
+      "DecisionRequest-Output": {
+        "properties": {
+          "context": {
+            "$ref": "#/components/schemas/Context-Output"
+          },
+          "finance": {
+            "$ref": "#/components/schemas/Finance-Output"
+          },
+          "method": {
+            "type": "string",
+            "enum": [
+              "beta",
+              "laplace"
+            ],
+            "title": "Method",
+            "default": "beta"
+          },
+          "prior": {
+            "type": "string",
+            "enum": [
+              "default",
+              "weak",
+              "strong"
+            ],
+            "title": "Prior",
+            "default": "default"
+          },
+          "card_id": {
+            "type": "string",
+            "enum": [
+              "nov-2026",
+              "dec-2026"
+            ],
+            "title": "Card Id",
+            "default": "nov-2026"
+          },
+          "as_of": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+            "title": "As Of",
+            "default": "2026-11-09"
+          },
+          "draw_count": {
+            "type": "integer",
+            "enum": [
+              4096,
+              16384
+            ],
+            "title": "Draw Count",
+            "default": 4096
+          },
+          "draw_seed": {
+            "type": "integer",
+            "maximum": 2147483647.0,
+            "minimum": 0.0,
+            "title": "Draw Seed",
+            "default": 8128
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "context",
+          "finance",
+          "method",
+          "prior",
+          "card_id",
+          "as_of",
+          "draw_count",
+          "draw_seed"
+        ],
+        "title": "DecisionRequest"
+      },
+      "DecisionResult": {
+        "properties": {
+          "provenance": {
+            "$ref": "#/components/schemas/Provenance"
+          },
+          "request": {
+            "$ref": "#/components/schemas/DecisionRequest-Output"
+          },
+          "method": {
+            "type": "string",
+            "enum": [
+              "beta",
+              "laplace"
+            ],
+            "title": "Method"
+          },
+          "uncertainty_method": {
+            "type": "string",
+            "title": "Uncertainty Method"
+          },
+          "uncertainty_target": {
+            "type": "string",
+            "title": "Uncertainty Target"
+          },
+          "incumbent_offer_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Incumbent Offer Id"
+          },
+          "greedy": {
+            "$ref": "#/components/schemas/Choice"
+          },
+          "cautious": {
+            "$ref": "#/components/schemas/Choice"
+          },
+          "offers": {
+            "items": {
+              "$ref": "#/components/schemas/OfferResult"
+            },
+            "type": "array",
+            "title": "Offers"
+          },
+          "improvement_margin_cents": {
+            "type": "integer",
+            "title": "Improvement Margin Cents"
+          },
+          "numerical_tolerance_cents": {
+            "type": "integer",
+            "title": "Numerical Tolerance Cents"
+          },
+          "draw_count": {
+            "type": "integer",
+            "title": "Draw Count"
+          },
+          "quantile_method": {
+            "type": "string",
+            "title": "Quantile Method"
+          },
+          "diagnostics": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Diagnostics"
+          },
+          "elapsed_ms": {
+            "type": "number",
+            "title": "Elapsed Ms"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "provenance",
+          "request",
+          "method",
+          "uncertainty_method",
+          "uncertainty_target",
+          "incumbent_offer_id",
+          "greedy",
+          "cautious",
+          "offers",
+          "improvement_margin_cents",
+          "numerical_tolerance_cents",
+          "draw_count",
+          "quantile_method",
+          "diagnostics",
+          "elapsed_ms"
+        ],
+        "title": "DecisionResult"
+      },
+      "EvaluationReport": {
+        "properties": {
+          "provenance": {
+            "$ref": "#/components/schemas/Provenance"
+          },
+          "prediction": {
+            "items": {
+              "$ref": "#/components/schemas/PredictionScore"
+            },
+            "type": "array",
+            "title": "Prediction"
+          },
+          "numerical": {
+            "items": {
+              "$ref": "#/components/schemas/NumericalCheck"
+            },
+            "type": "array",
+            "title": "Numerical"
+          },
+          "coverage": {
+            "items": {
+              "$ref": "#/components/schemas/CoverageRow"
+            },
+            "type": "array",
+            "title": "Coverage"
+          },
+          "policies": {
+            "items": {
+              "$ref": "#/components/schemas/PolicyScore"
+            },
+            "type": "array",
+            "title": "Policies"
+          },
+          "findings": {
+            "items": {
+              "$ref": "#/components/schemas/AuditFinding"
+            },
+            "type": "array",
+            "title": "Findings"
+          },
+          "commands": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Commands"
+          },
+          "elapsed_seconds": {
+            "type": "number",
+            "title": "Elapsed Seconds"
+          },
+          "interpretation": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Interpretation"
+          },
+          "datasets": {
+            "items": {
+              "$ref": "#/components/schemas/DatasetIdentity"
+            },
+            "type": "array",
+            "title": "Datasets"
+          },
+          "comparison": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/PointComparison"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "provenance",
+          "prediction",
+          "numerical",
+          "coverage",
+          "policies",
+          "findings",
+          "commands",
+          "elapsed_seconds",
+          "interpretation",
+          "datasets",
+          "comparison"
+        ],
+        "title": "EvaluationReport"
+      },
+      "EvidenceCell": {
+        "properties": {
+          "segment": {
+            "type": "string",
+            "enum": [
+              "new",
+              "growing",
+              "established",
+              "restart"
+            ],
+            "title": "Segment"
+          },
+          "offer_id": {
+            "type": "string",
+            "title": "Offer Id"
+          },
+          "exposures": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Exposures"
+          },
+          "responses": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Responses"
+          },
+          "accepted": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Accepted"
+          },
+          "alpha": {
+            "type": "number",
+            "title": "Alpha"
+          },
+          "beta": {
+            "type": "number",
+            "title": "Beta"
+          },
+          "posterior": {
+            "$ref": "#/components/schemas/Summary"
+          },
+          "support": {
+            "type": "string",
+            "enum": [
+              "supported",
+              "sparse",
+              "prior_only"
+            ],
+            "title": "Support"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "segment",
+          "offer_id",
+          "exposures",
+          "responses",
+          "accepted",
+          "alpha",
+          "beta",
+          "posterior",
+          "support"
+        ],
+        "title": "EvidenceCell"
+      },
+      "FeatureIdentity": {
+        "properties": {
+          "design": {
+            "type": "string",
+            "enum": [
+              "base",
+              "rate-interactions",
+              "without-burden"
+            ],
+            "title": "Design"
+          },
+          "columns": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Columns"
+          },
+          "transform_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Transform Sha256"
+          },
+          "base_mean": {
+            "items": {
+              "type": "number"
+            },
+            "type": "array",
+            "title": "Base Mean"
+          },
+          "base_scale": {
+            "items": {
+              "type": "number"
+            },
+            "type": "array",
+            "title": "Base Scale"
+          },
+          "derived_mean": {
+            "items": {
+              "type": "number"
+            },
+            "type": "array",
+            "title": "Derived Mean"
+          },
+          "derived_scale": {
+            "items": {
+              "type": "number"
+            },
+            "type": "array",
+            "title": "Derived Scale"
+          },
+          "fit_context_n": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Fit Context N"
+          },
+          "precision": {
+            "type": "string",
+            "enum": [
+              "float32",
+              "float64"
+            ],
+            "title": "Precision"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "design",
+          "columns",
+          "transform_sha256",
+          "base_mean",
+          "base_scale",
+          "derived_mean",
+          "derived_scale",
+          "fit_context_n",
+          "precision"
+        ],
+        "title": "FeatureIdentity"
+      },
+      "Feedback": {
+        "properties": {
+          "decision_index": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Decision Index"
+          },
+          "offer_id": {
+            "type": "string",
+            "title": "Offer Id"
+          },
+          "outcome_at": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Outcome At"
+          },
+          "available_at": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Available At"
+          },
+          "accepted": {
+            "type": "boolean",
+            "title": "Accepted"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "decision_index",
+          "offer_id",
+          "outcome_at",
+          "available_at",
+          "accepted"
+        ],
+        "title": "Feedback"
+      },
+      "Finance-Input": {
+        "properties": {
+          "principal_cents": {
+            "type": "integer",
+            "maximum": 100000000.0,
+            "minimum": 1.0,
+            "title": "Principal Cents",
+            "default": 3100000
+          },
+          "term_months": {
+            "type": "integer",
+            "maximum": 120.0,
+            "minimum": 1.0,
+            "title": "Term Months",
+            "default": 60
+          },
+          "balloon_cents": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Balloon Cents",
+            "default": 300000
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "Finance"
+      },
+      "Finance-Output": {
+        "properties": {
+          "principal_cents": {
+            "type": "integer",
+            "maximum": 100000000.0,
+            "minimum": 1.0,
+            "title": "Principal Cents",
+            "default": 3100000
+          },
+          "term_months": {
+            "type": "integer",
+            "maximum": 120.0,
+            "minimum": 1.0,
+            "title": "Term Months",
+            "default": 60
+          },
+          "balloon_cents": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Balloon Cents",
+            "default": 300000
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "principal_cents",
+          "term_months",
+          "balloon_cents"
+        ],
+        "title": "Finance"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "LabelBudget": {
+        "properties": {
+          "fit": {
+            "$ref": "#/components/schemas/LabelRole"
+          },
+          "early_stop": {
+            "$ref": "#/components/schemas/LabelRole"
+          },
+          "selection": {
+            "$ref": "#/components/schemas/LabelRole"
+          },
+          "calibration": {
+            "$ref": "#/components/schemas/LabelRole"
+          },
+          "monitoring": {
+            "$ref": "#/components/schemas/LabelRole"
+          },
+          "consumed_union_n": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Consumed Union N"
+          },
+          "observed_union_n": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Observed Union N"
+          },
+          "overlap": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Overlap"
+          },
+          "preprocessing_context_n": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Preprocessing Context N"
+          },
+          "support_history_n": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Support History N"
+          },
+          "external_pretraining": {
+            "type": "boolean",
+            "title": "External Pretraining"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "fit",
+          "early_stop",
+          "selection",
+          "calibration",
+          "monitoring",
+          "consumed_union_n",
+          "observed_union_n",
+          "overlap",
+          "preprocessing_context_n",
+          "support_history_n",
+          "external_pretraining"
+        ],
+        "title": "LabelBudget"
+      },
+      "LabelRole": {
+        "properties": {
+          "n": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "N"
+          },
+          "ids_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Ids Sha256"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "n",
+          "ids_sha256"
+        ],
+        "title": "LabelRole"
+      },
+      "LearningCurvePoint": {
+        "properties": {
+          "fit_n": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Fit N"
+          },
+          "fit_ids_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Fit Ids Sha256"
+          },
+          "train_log_loss": {
+            "type": "number",
+            "title": "Train Log Loss"
+          },
+          "early_stop_log_loss": {
+            "type": "number",
+            "title": "Early Stop Log Loss"
+          },
+          "iterations": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Iterations"
+          },
+          "elapsed_seconds": {
+            "type": "number",
+            "title": "Elapsed Seconds"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "fit_n",
+          "fit_ids_sha256",
+          "train_log_loss",
+          "early_stop_log_loss",
+          "iterations",
+          "elapsed_seconds"
+        ],
+        "title": "LearningCurvePoint"
+      },
+      "Metadata": {
+        "properties": {
+          "provenance": {
+            "$ref": "#/components/schemas/Provenance"
+          },
+          "available_methods": {
+            "items": {
+              "type": "string",
+              "enum": [
+                "beta",
+                "laplace"
+              ]
+            },
+            "type": "array",
+            "title": "Available Methods"
+          },
+          "evidence": {
+            "items": {
+              "$ref": "#/components/schemas/EvidenceCell"
+            },
+            "type": "array",
+            "title": "Evidence"
+          },
+          "teaching": {
+            "items": {
+              "$ref": "#/components/schemas/TeachingCell"
+            },
+            "type": "array",
+            "title": "Teaching"
+          },
+          "default_request": {
+            "$ref": "#/components/schemas/DecisionRequest-Output"
+          },
+          "minimum_responses": {
+            "type": "integer",
+            "title": "Minimum Responses"
+          },
+          "stages": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Stages"
+          },
+          "limitations": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Limitations"
+          },
+          "case_presets": {
+            "items": {
+              "$ref": "#/components/schemas/Context-Output"
+            },
+            "type": "array",
+            "title": "Case Presets"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "provenance",
+          "available_methods",
+          "evidence",
+          "teaching",
+          "default_request",
+          "minimum_responses",
+          "stages",
+          "limitations",
+          "case_presets"
+        ],
+        "title": "Metadata"
+      },
+      "MethodDevelopment": {
+        "properties": {
+          "family": {
+            "type": "string",
+            "enum": [
+              "smooth",
+              "nonlinear"
+            ],
+            "title": "Family"
+          },
+          "model": {
+            "type": "string",
+            "title": "Model"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "completed",
+              "precommitted"
+            ],
+            "title": "Status"
+          },
+          "selection": {
+            "type": "string",
+            "enum": [
+              "fixed",
+              "selected",
+              "pretrained"
+            ],
+            "title": "Selection"
+          },
+          "feature": {
+            "$ref": "#/components/schemas/FeatureIdentity"
+          },
+          "fit_matrix_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Fit Matrix Sha256"
+          },
+          "fit_data_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Fit Data Sha256"
+          },
+          "budget": {
+            "$ref": "#/components/schemas/LabelBudget"
+          },
+          "parameters": {
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "type": "object",
+            "title": "Parameters"
+          },
+          "optimizer": {
+            "type": "string",
+            "title": "Optimizer"
+          },
+          "chosen_candidate": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Chosen Candidate"
+          },
+          "trials": {
+            "items": {
+              "$ref": "#/components/schemas/SelectionTrial"
+            },
+            "type": "array",
+            "title": "Trials"
+          },
+          "curves": {
+            "items": {
+              "$ref": "#/components/schemas/LearningCurvePoint"
+            },
+            "type": "array",
+            "title": "Curves"
+          },
+          "fit_seconds": {
+            "type": "number",
+            "title": "Fit Seconds"
+          },
+          "prediction_seconds": {
+            "type": "number",
+            "title": "Prediction Seconds"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "family",
+          "model",
+          "status",
+          "selection",
+          "feature",
+          "fit_matrix_sha256",
+          "fit_data_sha256",
+          "budget",
+          "parameters",
+          "optimizer",
+          "chosen_candidate",
+          "trials",
+          "curves",
+          "fit_seconds",
+          "prediction_seconds"
+        ],
+        "title": "MethodDevelopment"
+      },
+      "NumericalCheck": {
+        "properties": {
+          "fixture": {
+            "type": "string",
+            "title": "Fixture"
+          },
+          "category": {
+            "type": "string",
+            "title": "Category"
+          },
+          "dimensions": {
+            "type": "integer",
+            "title": "Dimensions"
+          },
+          "max_quantile_error": {
+            "type": "number",
+            "title": "Max Quantile Error"
+          },
+          "tolerance": {
+            "type": "number",
+            "title": "Tolerance"
+          },
+          "posterior_tail_bound": {
+            "type": "number",
+            "title": "Posterior Tail Bound"
+          },
+          "grid_quantile_difference": {
+            "type": "number",
+            "title": "Grid Quantile Difference"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pass",
+              "reference_unreliable",
+              "approximation_error"
+            ],
+            "title": "Status"
+          },
+          "disposition": {
+            "type": "string",
+            "title": "Disposition"
+          },
+          "fallback": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Choice"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "fixture",
+          "category",
+          "dimensions",
+          "max_quantile_error",
+          "tolerance",
+          "posterior_tail_bound",
+          "grid_quantile_difference",
+          "status",
+          "disposition",
+          "fallback"
+        ],
+        "title": "NumericalCheck"
+      },
+      "OfferResult": {
+        "properties": {
+          "offer_id": {
+            "type": "string",
+            "title": "Offer Id"
+          },
+          "rate_bps": {
+            "type": "integer",
+            "title": "Rate Bps"
+          },
+          "eligible": {
+            "type": "boolean",
+            "title": "Eligible"
+          },
+          "monthly_payment_cents": {
+            "type": "integer",
+            "title": "Monthly Payment Cents"
+          },
+          "last_instalment_cents": {
+            "type": "integer",
+            "title": "Last Instalment Cents"
+          },
+          "total_repayment_cents": {
+            "type": "integer",
+            "title": "Total Repayment Cents"
+          },
+          "total_interest_cents": {
+            "type": "integer",
+            "title": "Total Interest Cents"
+          },
+          "contribution_if_accepted_cents": {
+            "type": "integer",
+            "title": "Contribution If Accepted Cents"
+          },
+          "decision_cost_cents": {
+            "type": "integer",
+            "title": "Decision Cost Cents"
+          },
+          "support": {
+            "$ref": "#/components/schemas/Support"
+          },
+          "acceptance": {
+            "$ref": "#/components/schemas/Summary"
+          },
+          "expected_contribution_cents": {
+            "$ref": "#/components/schemas/Summary"
+          },
+          "improvement_cents": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Summary"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "offer_id",
+          "rate_bps",
+          "eligible",
+          "monthly_payment_cents",
+          "last_instalment_cents",
+          "total_repayment_cents",
+          "total_interest_cents",
+          "contribution_if_accepted_cents",
+          "decision_cost_cents",
+          "support",
+          "acceptance",
+          "expected_contribution_cents",
+          "improvement_cents"
+        ],
+        "title": "OfferResult"
+      },
+      "PointComparison": {
+        "properties": {
+          "version": {
+            "type": "string",
+            "const": "point-comparison-v1",
+            "title": "Version"
+          },
+          "scenario_versions": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Scenario Versions"
+          },
+          "config_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Config Sha256"
+          },
+          "authority_version": {
+            "type": "string",
+            "const": "2.2",
+            "title": "Authority Version"
+          },
+          "authority_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Authority Sha256"
+          },
+          "final_seed": {
+            "type": "integer",
+            "title": "Final Seed"
+          },
+          "final_namespace": {
+            "type": "string",
+            "title": "Final Namespace"
+          },
+          "freeze_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Freeze Sha256"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "awaiting_tabpfn",
+              "completed"
+            ],
+            "title": "Status"
+          },
+          "development_fit_count": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Development Fit Count"
+          },
+          "development_seconds": {
+            "type": "number",
+            "title": "Development Seconds"
+          },
+          "baseline_fit_count": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Baseline Fit Count"
+          },
+          "methods": {
+            "items": {
+              "$ref": "#/components/schemas/MethodDevelopment"
+            },
+            "type": "array",
+            "title": "Methods"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "version",
+          "scenario_versions",
+          "config_sha256",
+          "authority_version",
+          "authority_sha256",
+          "final_seed",
+          "final_namespace",
+          "freeze_sha256",
+          "status",
+          "development_fit_count",
+          "development_seconds",
+          "baseline_fit_count",
+          "methods"
+        ],
+        "title": "PointComparison"
+      },
+      "PolicyScore": {
+        "properties": {
+          "family": {
+            "type": "string",
+            "title": "Family"
+          },
+          "model": {
+            "type": "string",
+            "title": "Model"
+          },
+          "policy": {
+            "type": "string",
+            "title": "Policy"
+          },
+          "n": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "N"
+          },
+          "reviews": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Reviews"
+          },
+          "recommendation_coverage": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Recommendation Coverage"
+          },
+          "expected_acceptance": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Expected Acceptance"
+          },
+          "mean_expected_contribution_cents": {
+            "type": "number",
+            "title": "Mean Expected Contribution Cents"
+          },
+          "review_handling_cost_cents": {
+            "type": "integer",
+            "title": "Review Handling Cost Cents"
+          },
+          "support_violations": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Support Violations"
+          },
+          "paired_difference_cents": {
+            "type": "number",
+            "title": "Paired Difference Cents"
+          },
+          "paired_bootstrap_low_cents": {
+            "type": "number",
+            "title": "Paired Bootstrap Low Cents"
+          },
+          "paired_bootstrap_high_cents": {
+            "type": "number",
+            "title": "Paired Bootstrap High Cents"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "family",
+          "model",
+          "policy",
+          "n",
+          "reviews",
+          "recommendation_coverage",
+          "expected_acceptance",
+          "mean_expected_contribution_cents",
+          "review_handling_cost_cents",
+          "support_violations",
+          "paired_difference_cents",
+          "paired_bootstrap_low_cents",
+          "paired_bootstrap_high_cents"
+        ],
+        "title": "PolicyScore"
+      },
+      "PredictionScore": {
+        "properties": {
+          "family": {
+            "type": "string",
+            "title": "Family"
+          },
+          "model": {
+            "type": "string",
+            "title": "Model"
+          },
+          "cohort": {
+            "type": "string",
+            "title": "Cohort"
+          },
+          "n": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "N"
+          },
+          "cohort_n": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Cohort N"
+          },
+          "advisory_supported_n": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Advisory Supported N"
+          },
+          "advisory_unsupported_n": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Advisory Unsupported N"
+          },
+          "missing_prediction_n": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Missing Prediction N"
+          },
+          "support_definition": {
+            "type": "string",
+            "const": "advisory-support-heuristic-v1",
+            "title": "Support Definition"
+          },
+          "brier": {
+            "type": "number",
+            "title": "Brier"
+          },
+          "log_loss": {
+            "type": "number",
+            "title": "Log Loss"
+          },
+          "calibration_error": {
+            "type": "number",
+            "title": "Calibration Error"
+          },
+          "calibration": {
+            "items": {
+              "$ref": "#/components/schemas/CalibrationBin"
+            },
+            "type": "array",
+            "title": "Calibration"
+          },
+          "slices": {
+            "items": {
+              "$ref": "#/components/schemas/SliceScore"
+            },
+            "type": "array",
+            "title": "Slices"
+          },
+          "uncertainty_method": {
+            "type": "string",
+            "title": "Uncertainty Method"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "family",
+          "model",
+          "cohort",
+          "n",
+          "cohort_n",
+          "advisory_supported_n",
+          "advisory_unsupported_n",
+          "missing_prediction_n",
+          "support_definition",
+          "brier",
+          "log_loss",
+          "calibration_error",
+          "calibration",
+          "slices",
+          "uncertainty_method"
+        ],
+        "title": "PredictionScore"
+      },
+      "Provenance": {
+        "properties": {
+          "schema_version": {
+            "type": "string",
+            "const": "1.2",
+            "title": "Schema Version"
+          },
+          "origin": {
+            "type": "string",
+            "const": "authored-fictional-simulation",
+            "title": "Origin"
+          },
+          "simulation_only": {
+            "type": "boolean",
+            "const": true,
+            "title": "Simulation Only"
+          },
+          "blueprint_version": {
+            "type": "string",
+            "const": "1.1",
+            "title": "Blueprint Version"
+          },
+          "blueprint_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Blueprint Sha256"
+          },
+          "config_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Config Sha256"
+          },
+          "data_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Data Sha256"
+          },
+          "source_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Source Sha256"
+          },
+          "run_id": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$",
+            "title": "Run Id"
+          },
+          "seed": {
+            "type": "integer",
+            "title": "Seed"
+          },
+          "currency": {
+            "type": "string",
+            "const": "EUR",
+            "title": "Currency"
+          },
+          "money_unit": {
+            "type": "string",
+            "const": "cent",
+            "title": "Money Unit"
+          },
+          "policy_version": {
+            "type": "string",
+            "const": "fictional-policy-1.0",
+            "title": "Policy Version"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "schema_version",
+          "origin",
+          "simulation_only",
+          "blueprint_version",
+          "blueprint_sha256",
+          "config_sha256",
+          "data_sha256",
+          "source_sha256",
+          "run_id",
+          "seed",
+          "currency",
+          "money_unit",
+          "policy_version"
+        ],
+        "title": "Provenance"
+      },
+      "ReplayFrame": {
+        "properties": {
+          "index": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Index"
+          },
+          "chosen_offer_id": {
+            "type": "string",
+            "title": "Chosen Offer Id"
+          },
+          "decision_at": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Decision At"
+          },
+          "outcome_at": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Outcome At"
+          },
+          "available_at": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Available At"
+          },
+          "assignment_probability": {
+            "type": "null",
+            "title": "Assignment Probability"
+          },
+          "matured": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Matured"
+          },
+          "pending": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Pending"
+          },
+          "exposures": {
+            "items": {
+              "type": "integer",
+              "minimum": 0.0
+            },
+            "type": "array",
+            "title": "Exposures"
+          },
+          "responses": {
+            "items": {
+              "type": "integer",
+              "minimum": 0.0
+            },
+            "type": "array",
+            "title": "Responses"
+          },
+          "mean_interval_width": {
+            "type": "number",
+            "title": "Mean Interval Width"
+          },
+          "interval_as_of_index": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Interval As Of Index"
+          },
+          "cumulative_realised_cents": {
+            "type": "number",
+            "title": "Cumulative Realised Cents"
+          },
+          "cumulative_expected_cents": {
+            "type": "number",
+            "title": "Cumulative Expected Cents"
+          },
+          "cumulative_oracle_regret_cents": {
+            "type": "number",
+            "title": "Cumulative Oracle Regret Cents"
+          },
+          "feedback": {
+            "items": {
+              "$ref": "#/components/schemas/Feedback"
+            },
+            "type": "array",
+            "title": "Feedback"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "index",
+          "chosen_offer_id",
+          "decision_at",
+          "outcome_at",
+          "available_at",
+          "assignment_probability",
+          "matured",
+          "pending",
+          "exposures",
+          "responses",
+          "mean_interval_width",
+          "interval_as_of_index",
+          "cumulative_realised_cents",
+          "cumulative_expected_cents",
+          "cumulative_oracle_regret_cents",
+          "feedback"
+        ],
+        "title": "ReplayFrame"
+      },
+      "ReplayPath": {
+        "properties": {
+          "model": {
+            "type": "string",
+            "title": "Model"
+          },
+          "policy": {
+            "type": "string",
+            "title": "Policy"
+          },
+          "scenario": {
+            "type": "string",
+            "title": "Scenario"
+          },
+          "seed": {
+            "type": "integer",
+            "title": "Seed"
+          },
+          "frames": {
+            "items": {
+              "$ref": "#/components/schemas/ReplayFrame"
+            },
+            "type": "array",
+            "title": "Frames"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "model",
+          "policy",
+          "scenario",
+          "seed",
+          "frames"
+        ],
+        "title": "ReplayPath"
+      },
+      "ReplayReport": {
+        "properties": {
+          "provenance": {
+            "$ref": "#/components/schemas/Provenance"
+          },
+          "paths": {
+            "items": {
+              "$ref": "#/components/schemas/ReplayPath"
+            },
+            "type": "array",
+            "title": "Paths"
+          },
+          "summaries": {
+            "items": {
+              "$ref": "#/components/schemas/ReplaySummary"
+            },
+            "type": "array",
+            "title": "Summaries"
+          },
+          "scenarios": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Scenarios"
+          },
+          "seed_ids": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array",
+            "title": "Seed Ids"
+          },
+          "initial_evidence_count": {
+            "type": "integer",
+            "title": "Initial Evidence Count"
+          },
+          "decisions_per_seed": {
+            "type": "integer",
+            "title": "Decisions Per Seed"
+          },
+          "elapsed_seconds": {
+            "type": "number",
+            "title": "Elapsed Seconds"
+          },
+          "interpretation": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Interpretation"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "provenance",
+          "paths",
+          "summaries",
+          "scenarios",
+          "seed_ids",
+          "initial_evidence_count",
+          "decisions_per_seed",
+          "elapsed_seconds",
+          "interpretation"
+        ],
+        "title": "ReplayReport"
+      },
+      "ReplaySummary": {
+        "properties": {
+          "model": {
+            "type": "string",
+            "title": "Model"
+          },
+          "policy": {
+            "type": "string",
+            "title": "Policy"
+          },
+          "scenario": {
+            "type": "string",
+            "title": "Scenario"
+          },
+          "seeds": {
+            "type": "integer",
+            "title": "Seeds"
+          },
+          "mean_realised_cents": {
+            "type": "number",
+            "title": "Mean Realised Cents"
+          },
+          "mean_expected_cents": {
+            "type": "number",
+            "title": "Mean Expected Cents"
+          },
+          "expected_q05_cents": {
+            "type": "number",
+            "title": "Expected Q05 Cents"
+          },
+          "expected_q95_cents": {
+            "type": "number",
+            "title": "Expected Q95 Cents"
+          },
+          "mean_regret_cents": {
+            "type": "number",
+            "title": "Mean Regret Cents"
+          },
+          "paired_vs_fixed_mean_cents": {
+            "type": "number",
+            "title": "Paired Vs Fixed Mean Cents"
+          },
+          "paired_vs_fixed_low_cents": {
+            "type": "number",
+            "title": "Paired Vs Fixed Low Cents"
+          },
+          "paired_vs_fixed_high_cents": {
+            "type": "number",
+            "title": "Paired Vs Fixed High Cents"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "model",
+          "policy",
+          "scenario",
+          "seeds",
+          "mean_realised_cents",
+          "mean_expected_cents",
+          "expected_q05_cents",
+          "expected_q95_cents",
+          "mean_regret_cents",
+          "paired_vs_fixed_mean_cents",
+          "paired_vs_fixed_low_cents",
+          "paired_vs_fixed_high_cents"
+        ],
+        "title": "ReplaySummary"
+      },
+      "SelectionTrial": {
+        "properties": {
+          "candidate_id": {
+            "type": "string",
+            "title": "Candidate Id"
+          },
+          "design": {
+            "type": "string",
+            "enum": [
+              "base",
+              "rate-interactions",
+              "without-burden"
+            ],
+            "title": "Design"
+          },
+          "columns": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Columns"
+          },
+          "feature_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Feature Sha256"
+          },
+          "parameters": {
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "type": "object",
+            "title": "Parameters"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "completed",
+              "failed",
+              "budget_cutoff"
+            ],
+            "title": "Status"
+          },
+          "failure": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Failure"
+          },
+          "selection_log_loss": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Selection Log Loss"
+          },
+          "selection_brier": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Selection Brier"
+          },
+          "selection_calibration_error": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Selection Calibration Error"
+          },
+          "iterations": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Iterations"
+          },
+          "chosen_round": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Chosen Round"
+          },
+          "stopped_round": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Stopped Round"
+          },
+          "validation_stop": {
+            "type": "boolean",
+            "title": "Validation Stop"
+          },
+          "round_cap": {
+            "type": "boolean",
+            "title": "Round Cap"
+          },
+          "reason": {
+            "type": "string",
+            "title": "Reason"
+          },
+          "fit_seconds": {
+            "type": "number",
+            "title": "Fit Seconds"
+          },
+          "train_loss": {
+            "items": {
+              "type": "number"
+            },
+            "type": "array",
+            "title": "Train Loss"
+          },
+          "development_loss": {
+            "items": {
+              "type": "number"
+            },
+            "type": "array",
+            "title": "Development Loss"
+          },
+          "elapsed_seconds": {
+            "type": "number",
+            "title": "Elapsed Seconds"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "candidate_id",
+          "design",
+          "columns",
+          "feature_sha256",
+          "parameters",
+          "status",
+          "failure",
+          "selection_log_loss",
+          "selection_brier",
+          "selection_calibration_error",
+          "iterations",
+          "chosen_round",
+          "stopped_round",
+          "validation_stop",
+          "round_cap",
+          "reason",
+          "fit_seconds",
+          "train_loss",
+          "development_loss",
+          "elapsed_seconds"
+        ],
+        "title": "SelectionTrial"
+      },
+      "SliceScore": {
+        "properties": {
+          "slice": {
+            "type": "string",
+            "title": "Slice"
+          },
+          "n": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "N"
+          },
+          "brier": {
+            "type": "number",
+            "title": "Brier"
+          },
+          "log_loss": {
+            "type": "number",
+            "title": "Log Loss"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "slice",
+          "n",
+          "brier",
+          "log_loss"
+        ],
+        "title": "SliceScore"
+      },
+      "Summary": {
+        "properties": {
+          "mean": {
+            "type": "number",
+            "title": "Mean"
+          },
+          "q05": {
+            "type": "number",
+            "title": "Q05"
+          },
+          "q50": {
+            "type": "number",
+            "title": "Q50"
+          },
+          "q95": {
+            "type": "number",
+            "title": "Q95"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mean",
+          "q05",
+          "q50",
+          "q95"
+        ],
+        "title": "Summary"
+      },
+      "Support": {
+        "properties": {
+          "state": {
+            "type": "string",
+            "enum": [
+              "supported",
+              "sparse",
+              "prior_only",
+              "blocked"
+            ],
+            "title": "State"
+          },
+          "automated": {
+            "type": "boolean",
+            "title": "Automated"
+          },
+          "exposure_count": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Exposure Count"
+          },
+          "response_count": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Response Count"
+          },
+          "accepted_count": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Accepted Count"
+          },
+          "pending_count": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Pending Count"
+          },
+          "observed_card_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Observed Card Ids"
+          },
+          "observed_policy_versions": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Observed Policy Versions"
+          },
+          "observed_rate_bps": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array",
+            "title": "Observed Rate Bps"
+          },
+          "within_training_range": {
+            "type": "boolean",
+            "title": "Within Training Range"
+          },
+          "reasons": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Reasons"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "state",
+          "automated",
+          "exposure_count",
+          "response_count",
+          "accepted_count",
+          "pending_count",
+          "observed_card_ids",
+          "observed_policy_versions",
+          "observed_rate_bps",
+          "within_training_range",
+          "reasons"
+        ],
+        "title": "Support"
+      },
+      "TeachingCell": {
+        "properties": {
+          "accepted": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Accepted"
+          },
+          "observed": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Observed"
+          },
+          "alpha": {
+            "type": "number",
+            "title": "Alpha"
+          },
+          "beta": {
+            "type": "number",
+            "title": "Beta"
+          },
+          "posterior": {
+            "$ref": "#/components/schemas/Summary"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "accepted",
+          "observed",
+          "alpha",
+          "beta",
+          "posterior"
+        ],
+        "title": "TeachingCell"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
+}

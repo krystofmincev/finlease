@@ -30,7 +30,7 @@ Open [127.0.0.1:43187](http://127.0.0.1:43187). Stop with Ctrl-C. The saved JSON
 - **Case review:** compare mean and cautious decisions using shared model draws; see payments and support separately.
 - **Evidence map:** inspect 8/10 versus 800/1000 responses and cells with no exposure.
 - **Learning replay:** step through saved decisions, pending feedback and the cost of exploration.
-- **Model audit:** compare logistic regression, sklearn histogram gradient boosting and pretrained TabPFN V2 on two synthetic worlds; inspect real development curves and numerical failures.
+- **Model audit:** compare logistic regression, sklearn histogram gradient boosting and pretrained TabPFN V2 on two synthetic worlds; inspect label budgets, real development curves, accuracy checks, known limitations and experiments that were not adopted.
 
 The final point comparison scores **900 applicants per world**, including all **17 unsupported cases**. Same-512-fitting-label controls share full-fit preprocessing/support history; external pretraining is unequalized. Selected models use additional development labels. Point predictions do not supply the lab's cautious or Thompson uncertainty draws.
 

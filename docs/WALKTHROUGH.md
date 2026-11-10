@@ -11,7 +11,7 @@ Start with the saved screenshots and results. No setup is needed to inspect this
 
 To interact, follow [setup](SETUP.md), then use the four views in the left navigation.
 
-In **Learning replay**, select **Response mechanism changes** under **Environment**, then scroll beneath the chart. The replay starts at application **1**; use **Play**, **Step +1**, or drag the application slider to **400**. The [saved endpoint](../artifacts/browser-review/core-4bdfd484fa12/changed-response-replay.jpg) shows the controls and comparison. A pending response is not a refusal, and only chosen feedback that has arrived updates the learner. In this saved experiment, Thompson sampling loses; exploration has a cost.
+In **Learning replay**, select **Response mechanism changes** under **Environment**, then scroll beneath the chart. To match the saved screenshot exactly, select **Pooled logistic · Laplace** under **Learning model**, keeping **Detailed seed: Seed 0** and **Contribution: Expected · evaluator aggregate**. The replay starts at application **1**; use **Play**, **Step +1**, or drag the application slider to **400**. The [saved endpoint](../artifacts/browser-review/core-4bdfd484fa12/changed-response-replay.jpg) shows the controls and comparison. A pending response is not a refusal, and only chosen feedback that has arrived updates the learner. In this saved experiment, Thompson sampling loses; exploration has a cost.
 
 ## An engineer's next three stops
 

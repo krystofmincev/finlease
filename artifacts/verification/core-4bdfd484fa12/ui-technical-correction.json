@@ -1,0 +1,13 @@
+{
+  "finding": "SVG polyline default fill obscured actual development curve",
+  "fix": "explicit fill=none on both plotted lines",
+  "affected_file": "ui/src/features/PointDevelopment.tsx",
+  "new_file_sha256": "bebd43c7af2552f5412a0504647f814306e250d874c4fe88e378ef990bbd96a2",
+  "scientific_source_sha256": "1ec33f9b4156ba16945c6221864c66635dbf4c134a882e7b183f69cdeed7c9c7",
+  "new_final_generation": false,
+  "scientific_rerun": false,
+  "failed_observation": "artifacts/browser-review/core-4bdfd484fa12/smooth-development-before-fix.jpg",
+  "additional_copy_correction": "Footer now says Pretrained transformer instead of Optional transformer, matching required C1 qualification.",
+  "additional_file": "ui/src/App.tsx",
+  "additional_file_sha256": "772e148a56c56ad4c8b26841b76857428b0fca7299c13d23690c6697271bd0ff"
+}

@@ -1,0 +1,158 @@
+{
+  "original_run": "core-01e96c4ee2b1",
+  "repair_run": "core-d1e450cb9856",
+  "repair_source_sha256": "68993705a10e5cc5d718459e1a2e3cb8d8a19c90af584ff74779e87fa45c1997",
+  "comparison": null,
+  "ignored_fields": [
+    "advisory_supported_n",
+    "advisory_unsupported_n",
+    "cohort_n",
+    "comparison",
+    "confirmation_namespace",
+    "elapsed_ms",
+    "elapsed_seconds",
+    "missing_prediction_n",
+    "provenance",
+    "replay_elapsed_seconds",
+    "support_definition"
+  ],
+  "proof": {
+    "bundle.json": "exact scientific equality after identity/timing/new-disclosure removal",
+    "evaluation.json": "exact scientific equality after identity/timing/new-disclosure removal",
+    "replays.json": "exact scientific equality after identity/timing/new-disclosure removal",
+    "split-ids.json": "exact scientific equality after identity/timing/new-disclosure removal",
+    "case-suite.json": "exact scientific equality after identity/timing/new-disclosure removal",
+    "manifest.json": "exact scientific equality after identity/timing/new-disclosure removal"
+  },
+  "sealed_test_counts": [
+    {
+      "family": "smooth",
+      "model": "empirical-rate",
+      "supported": 886,
+      "unsupported": 14,
+      "missing": 0,
+      "n": 900
+    },
+    {
+      "family": "smooth",
+      "model": "empirical-cell",
+      "supported": 886,
+      "unsupported": 14,
+      "missing": 0,
+      "n": 900
+    },
+    {
+      "family": "smooth",
+      "model": "beta",
+      "supported": 886,
+      "unsupported": 14,
+      "missing": 0,
+      "n": 900
+    },
+    {
+      "family": "smooth",
+      "model": "logistic-point",
+      "supported": 886,
+      "unsupported": 14,
+      "missing": 0,
+      "n": 900
+    },
+    {
+      "family": "smooth",
+      "model": "laplace",
+      "supported": 886,
+      "unsupported": 14,
+      "missing": 0,
+      "n": 900
+    },
+    {
+      "family": "smooth",
+      "model": "laplace-prior-default",
+      "supported": 886,
+      "unsupported": 14,
+      "missing": 0,
+      "n": 900
+    },
+    {
+      "family": "smooth",
+      "model": "laplace-prior-weak",
+      "supported": 886,
+      "unsupported": 14,
+      "missing": 0,
+      "n": 900
+    },
+    {
+      "family": "smooth",
+      "model": "laplace-prior-strong",
+      "supported": 886,
+      "unsupported": 14,
+      "missing": 0,
+      "n": 900
+    },
+    {
+      "family": "nonlinear",
+      "model": "empirical-rate",
+      "supported": 886,
+      "unsupported": 14,
+      "missing": 0,
+      "n": 900
+    },
+    {
+      "family": "nonlinear",
+      "model": "empirical-cell",
+      "supported": 886,
+      "unsupported": 14,
+      "missing": 0,
+      "n": 900
+    },
+    {
+      "family": "nonlinear",
+      "model": "beta",
+      "supported": 886,
+      "unsupported": 14,
+      "missing": 0,
+      "n": 900
+    },
+    {
+      "family": "nonlinear",
+      "model": "logistic-point",
+      "supported": 886,
+      "unsupported": 14,
+      "missing": 0,
+      "n": 900
+    },
+    {
+      "family": "nonlinear",
+      "model": "laplace",
+      "supported": 886,
+      "unsupported": 14,
+      "missing": 0,
+      "n": 900
+    },
+    {
+      "family": "nonlinear",
+      "model": "laplace-prior-default",
+      "supported": 886,
+      "unsupported": 14,
+      "missing": 0,
+      "n": 900
+    },
+    {
+      "family": "nonlinear",
+      "model": "laplace-prior-weak",
+      "supported": 886,
+      "unsupported": 14,
+      "missing": 0,
+      "n": 900
+    },
+    {
+      "family": "nonlinear",
+      "model": "laplace-prior-strong",
+      "supported": 886,
+      "unsupported": 14,
+      "missing": 0,
+      "n": 900
+    }
+  ],
+  "new_run_bytes": 15067924
+}

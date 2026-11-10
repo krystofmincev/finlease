@@ -1,0 +1,40 @@
+{
+  "scenario_versions": {
+    "smooth": "smooth-logistic-v1",
+    "nonlinear": "complex-economic-mixture-v1"
+  },
+  "data_sha256": {
+    "smooth": "4bd515644f02c43ca20f4e4a5049be4d05a6358ea993f07fa7f4deec28436c70",
+    "nonlinear": "cb79c265da0609f105f796abd4ae6297dc1714f2150e94a09abc20a02780ccb6"
+  },
+  "smooth_data_exact": true,
+  "smooth_probability_fixtures_exact": true,
+  "complex_fit_attribute_correlations": {
+    "new": {
+      "n": 1028,
+      "log_turnover_burden_correlation": -0.4055930298450876
+    },
+    "growing": {
+      "n": 1120,
+      "log_turnover_burden_correlation": -0.44755583293520934
+    },
+    "established": {
+      "n": 1412,
+      "log_turnover_burden_correlation": -0.40086929053893355
+    },
+    "restart": {
+      "n": 40,
+      "log_turnover_burden_correlation": -0.3591909671920957
+    }
+  },
+  "max_scalar_component_absolute_error": 0.0,
+  "max_latent_sampling_standard_errors": 2.8244107652242634,
+  "latent_samples_per_context": 100000,
+  "latent_contexts": 4,
+  "price_monotonicity_violations": 0,
+  "competing_offer_direction_violations": 0,
+  "fresh_reserve_generated": false,
+  "aggregate_measurement_source_sha256": "4d6a6035e524a3eff7502ed1d6582f2cdf25189d974b7f864d6f1c2a809a943e",
+  "focused_verification_source_sha256": "c1b928cd50593bdf2571f144a16e68216e32a0a46a43544bd46a23dbb14ca009",
+  "scenario_module_sha256": "31ed6650c4d25bffa28d000071959799109b4502bc32dfcfb22ec326cf1771ec"
+}

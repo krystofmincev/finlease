@@ -1,0 +1,26 @@
+{
+  "allowed_post_final_ui_changes": {
+    "ui/src/App.tsx": {
+      "after": "772e148a56c56ad4c8b26841b76857428b0fca7299c13d23690c6697271bd0ff",
+      "before": "437f2d8695becf7bb8b8232cfacfaf482c08397ed6f4573c32e8e2d56dba08f1"
+    },
+    "ui/src/features/PointDevelopment.tsx": {
+      "after": "bebd43c7af2552f5412a0504647f814306e250d874c4fe88e378ef990bbd96a2",
+      "before": "337e39e386a90cc346da3e2ffe03eac59c6b7757e5562256d1e2426bc4d62c95"
+    }
+  },
+  "bootstrap_scientific_source_unchanged": true,
+  "browser_evidence": "artifacts/browser-review/core-4bdfd484fa12",
+  "run_id": "core-4bdfd484fa12",
+  "scientific_reruns_after_final_exposure": 0,
+  "source_sha256": "1ec33f9b4156ba16945c6221864c66635dbf4c134a882e7b183f69cdeed7c9c7",
+  "ui_build_assets": {
+    "ui/dist/assets/index-BQJZ7kgR.css": "293b6fb425d957a8f7854d2ad2cbe7e387871ad8673fc45e739ba6192ddc6afb",
+    "ui/dist/assets/index-Bb3dwnCv.js": "c5b98e941098c387c5782859fcf7cfa3fa3f35d3c1f9e71d7a2191b8e033d19b",
+    "ui/dist/index.html": "6f8773cd702d08c90fef7c890ab789893ea3fdd1c494cd55be1dca53b132c0f9"
+  },
+  "viewport": {
+    "height": 831,
+    "width": 1470
+  }
+}

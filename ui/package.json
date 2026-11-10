@@ -1,0 +1,15 @@
+{
+  "name": "lease-decision-lab-ui",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "contracts": "openapi-typescript src/api/openapi.json -o src/api/generated.ts",
+    "check": "tsc --noEmit",
+    "test:contracts": "node scripts/check-contracts.mjs",
+    "build": "npm run check && vite build",
+    "dev": "vite --host 127.0.0.1 --port 43188 --strictPort"
+  },
+  "dependencies": {"react": "19.3.1", "react-dom": "19.3.1", "ajv": "8.20.0"},
+  "devDependencies": {"typescript": "5.9.3", "vite": "8.3.5", "openapi-typescript": "7.13.0", "@types/react": "19.3.0", "@types/react-dom": "19.3.0"}
+}

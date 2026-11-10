@@ -1,0 +1,24 @@
+Traceback (most recent call last):
+  File "<project>/.venv/bin/lease-lab", line 10, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "<project>/src/lease_lab/cli.py", line 31, in main
+    else build_learning()
+         ^^^^^^^^^^^^^^^^
+  File "<project>/src/lease_lab/builds/core.py", line 46, in build_learning
+    replay_report = build_replays(provenance)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<project>/src/lease_lab/evaluation/replays.py", line 164, in build_replays
+    replay(
+  File "<project>/src/lease_lab/evaluation/replays.py", line 127, in replay
+    width = learner.width()
+            ^^^^^^^^^^^^^^^
+  File "<project>/src/lease_lab/models/online.py", line 137, in width
+    _, low, high = self.sampler.predict([probe] * 3, HISTORICAL_OFFERS)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<project>/src/lease_lab/models/logistic_laplace.py", line 194, in predict
+    require_usable_posterior(self.state.diagnostics)
+  File "<project>/src/lease_lab/models/logistic_laplace.py", line 61, in require_usable_posterior
+    raise ValueError("approximate posterior failed numerical/reference gate")
+ValueError: approximate posterior failed numerical/reference gate
+make: *** [reproduce] Error 1

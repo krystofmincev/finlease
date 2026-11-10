@@ -1,0 +1,78 @@
+{
+  "version": "point-comparison-v1",
+  "authority_version": "2.2",
+  "authority_sha256": "a393c2cc252ca84f2be3e23a89a92e4890a4cbb59488b14d766c891041962045",
+  "final_seed": 20261111,
+  "final_namespace": "comparison-confirmation-v1",
+  "seed": 20261109,
+  "fit_sizes": [
+    512,
+    1800,
+    3600
+  ],
+  "development_seconds": 60,
+  "maximum_added_fits": 42,
+  "logistic": {
+    "designs": [
+      "base",
+      "rate-interactions",
+      "without-burden"
+    ],
+    "C": [
+      0.1,
+      1.0,
+      10.0
+    ],
+    "solver": "lbfgs",
+    "max_iter": 200,
+    "fit_intercept": false
+  },
+  "gbdt": {
+    "base_rates": [
+      0.03,
+      0.1
+    ],
+    "base_leaves": [
+      7,
+      15
+    ],
+    "ablation_rate": 0.1,
+    "ablation_leaves": 7,
+    "loss": "log_loss",
+    "max_iter": 300,
+    "l2_regularization": 1.0,
+    "min_samples_leaf": 20,
+    "max_bins": 255,
+    "max_features": 1.0,
+    "categorical_features": null,
+    "class_weight": null,
+    "monotonic_cst": null,
+    "interaction_cst": null,
+    "n_iter_no_change": 20,
+    "tol": 0.0001
+  },
+  "fixed_gbdt": {
+    "learning_rate": 0.1,
+    "max_leaf_nodes": 7,
+    "max_iter": 100,
+    "early_stopping": false
+  },
+  "selection": {
+    "criterion": "mean factual log loss",
+    "tie_tolerance": 1e-08,
+    "calibration_labels": 0
+  },
+  "roles": {
+    "fit": 3600,
+    "early_stop": 450,
+    "report_only": 450,
+    "selection": 600,
+    "calibration": 0
+  },
+  "tabpfn_config_sha256": "7663ccc52f98a0ac452673c919e074a6678dea382024f954c63067946821ab3d",
+  "scenario_versions": {
+    "smooth": "smooth-logistic-v1",
+    "nonlinear": "complex-economic-mixture-v1"
+  },
+  "scenario_supplement_sha256": "3aa2dce5a2239996baef90e6e9cf9ed8097ab9670f6b68b5dc0fe1cb98303fd7"
+}

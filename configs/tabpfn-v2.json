@@ -1,0 +1,14 @@
+{
+  "library_version": "9.2.0",
+  "checkpoint_repo": "Prior-Labs/TabPFN-v2-clf",
+  "checkpoint_revision": "275f19d2add9c2c0de38f9ebaded3856599fa2e7",
+  "checkpoint_filename": "tabpfn-v2-classifier-v2_default.ckpt",
+  "checkpoint_sha256": "cf8c519c01eaf1613ee91239006d57b1c806ff5f23ac1aeb1315ba1015210e49",
+  "license_url": "https://huggingface.co/Prior-Labs/TabPFN-v2-clf/resolve/275f19d2add9c2c0de38f9ebaded3856599fa2e7/LICENSE.txt",
+  "context_applicants": 512,
+  "estimators": 1,
+  "query_chunk_size": 96,
+  "seed": 20261109,
+  "max_seconds": 600,
+  "memory_target_bytes": 1500000000
+}

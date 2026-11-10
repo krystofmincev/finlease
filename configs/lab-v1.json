@@ -1,0 +1,58 @@
+{
+  "version": "fictional-policy-1.0",
+  "blueprint_version": "1.1",
+  "blueprint_sha256": "e6e8d659751eefca3b160d82e21bfb06c3fb51bd1bf153a1a82fc74f98f5cf1d",
+  "seed": 20261109,
+  "confirmation_seed": 20261111,
+  "applicants": 6000,
+  "fit_fraction": 0.6,
+  "diagnostic_fraction": 0.15,
+  "selection_fraction": 0.1,
+  "principal_cents": 3100000,
+  "term_months": 60,
+  "balloon_cents": 300000,
+  "incumbent_offer_id": "r900",
+  "acceptance_contribution_cents": {
+    "r800": 90000,
+    "r900": 125000,
+    "r1000": 170000,
+    "r850": 107000,
+    "r950": 147000,
+    "r1050": 192000
+  },
+  "decision_cost_cents": 3500,
+  "review_cost_cents": 1500,
+  "improvement_margin_cents": 2000,
+  "quantile_boundary_tolerance_cents": 200,
+  "tie_tolerance_cents": 0.01,
+  "minimum_responses": 30,
+  "draws": 4096,
+  "draw_seed": 8128,
+  "segment_probabilities": [
+    0.28,
+    0.32,
+    0.39,
+    0.01
+  ],
+  "coverage_seeds": 30,
+  "coverage_applicants": 1200,
+  "replay_seeds": 20,
+  "replay_decisions": 400,
+  "replay_initial_applicants": 90,
+  "replay_refit_interval": 25,
+  "budget": {
+    "offline_seconds": 300,
+    "warm_decision_ms": 300,
+    "workers": 1,
+    "artifact_megabytes": 30,
+    "memory_megabytes_target": 1500
+  },
+  "confirmation_namespace": "comparison-confirmation-v1",
+  "point_comparison_version": "point-comparison-v1",
+  "point_comparison_config_sha256": "d78fd1e3b6f9f4ab16f43c948f00dcb5ca77edba38d048795627c1dbce8460ea",
+  "scenario_versions": {
+    "smooth": "smooth-logistic-v1",
+    "nonlinear": "complex-economic-mixture-v1"
+  },
+  "scenario_supplement_sha256": "3aa2dce5a2239996baef90e6e9cf9ed8097ab9670f6b68b5dc0fe1cb98303fd7"
+}

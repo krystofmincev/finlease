@@ -1,0 +1,102 @@
+{
+  "date": "2026-11-10",
+  "environment": {
+    "kind": "new isolated environment on existing host; existing caches reused",
+    "platform": "macOS 15.5 arm64",
+    "python": "3.12.13",
+    "uv": "0.13.7",
+    "node": "24.14.0",
+    "npm": "11.9.0"
+  },
+  "run_id": "core-4bdfd484fa12",
+  "source_sha256": "1ec33f9b4156ba16945c6221864c66635dbf4c134a882e7b183f69cdeed7c9c7",
+  "selection_freeze_sha256": "364e0a5f0e855d25484db854ae265f0a7a48ae4bcb1b322e53b0c57ac5b8cf28",
+  "commands": [
+    {
+      "command": "uv sync --frozen",
+      "exit_code": 0,
+      "seconds": 0.99
+    },
+    {
+      "command": "make setup",
+      "exit_code": 0,
+      "seconds": 2.015
+    },
+    {
+      "command": "npm run build --prefix ui",
+      "exit_code": 0,
+      "seconds": 2.245
+    },
+    {
+      "command": "make check",
+      "exit_code": 0,
+      "seconds": 14.454
+    }
+  ],
+  "serving_attempts": [
+    {
+      "readiness_bound_seconds": 10,
+      "status": "timeout",
+      "cause": "not established",
+      "cleanup_passed": true
+    },
+    {
+      "readiness_bound_seconds": 45,
+      "status": "passed",
+      "readiness_seconds": 1.571,
+      "cleanup_passed": true
+    }
+  ],
+  "http": {
+    "root_and_both_assets": "passed",
+    "all_five_routes": "passed",
+    "final_prediction_rows": 10,
+    "per_world_method_count": 5,
+    "per_row_scored": 900,
+    "per_row_supported": 883,
+    "per_row_unsupported": 17,
+    "per_row_missing": 0,
+    "invalid_finance_status": 422,
+    "valid_recovery_status": 200,
+    "december_status": "review: insufficient_observed_support",
+    "growing_greedy_offer": "r1000",
+    "growing_cautious_offer": "r900",
+    "growing_mean_improvement_cents": 5954.952975832675,
+    "growing_q05_improvement_cents": -2696.018307579656
+  },
+  "checks": {
+    "python_tests_passed": 72,
+    "python_warning_count": 1,
+    "warning": "installed Starlette TestClient/httpx deprecation",
+    "ruff": "passed",
+    "actual_response_ajv_contracts": 5,
+    "typescript": "passed",
+    "completed_inventory_and_serving_boundary": "passed",
+    "rebuilt_ui_matches_retained_bytes": true,
+    "candidate_files_equal_after_smoke": 155,
+    "initial_copied_source_hashes_equal": 138,
+    "browser_export_bytes": 289179,
+    "browser_export_strict_and_semantic_validation": "passed",
+    "torch_and_tabpfn_present_in_saved_demo_environment": false,
+    "broken_local_document_links": [],
+    "documentation_links_outside_candidate": [],
+    "targeted_private_path_or_credential_findings": [],
+    "symlinks_or_excluded_runtime_files": []
+  },
+  "cleanup": {
+    "isolated_environment_removed": true,
+    "owned_runtime_absent": true,
+    "port_43187_free": true,
+    "resource_claim_released": true,
+    "private_attempt_logs_retained": true,
+    "original_environment_preserved": true
+  },
+  "not_repeated": [
+    "full scientific reproduction",
+    "pretrained inference or model download",
+    "bootstrap audit",
+    "new interactive browser review",
+    "mobile or cross-platform test"
+  ],
+  "publication": "not performed; project ownership and licence decision remain pending"
+}

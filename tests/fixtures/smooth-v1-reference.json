@@ -1,0 +1,203 @@
+{
+  "data_sha256": "4bd515644f02c43ca20f4e4a5049be4d05a6358ea993f07fa7f4deec28436c70",
+  "probabilities": [
+    {
+      "context": {
+        "segment": "established",
+        "business_age_years": 12.0,
+        "monthly_turnover_cents": 3000000,
+        "existing_debt_burden": 0.18
+      },
+      "rate": 800,
+      "shifted": false,
+      "p": 0.9297241226539188
+    },
+    {
+      "context": {
+        "segment": "established",
+        "business_age_years": 12.0,
+        "monthly_turnover_cents": 3000000,
+        "existing_debt_burden": 0.18
+      },
+      "rate": 800,
+      "shifted": true,
+      "p": 0.9329216135105576
+    },
+    {
+      "context": {
+        "segment": "established",
+        "business_age_years": 12.0,
+        "monthly_turnover_cents": 3000000,
+        "existing_debt_burden": 0.18
+      },
+      "rate": 900,
+      "shifted": false,
+      "p": 0.8432299082350899
+    },
+    {
+      "context": {
+        "segment": "established",
+        "business_age_years": 12.0,
+        "monthly_turnover_cents": 3000000,
+        "existing_debt_burden": 0.18
+      },
+      "rate": 900,
+      "shifted": true,
+      "p": 0.686209906910197
+    },
+    {
+      "context": {
+        "segment": "established",
+        "business_age_years": 12.0,
+        "monthly_turnover_cents": 3000000,
+        "existing_debt_burden": 0.18
+      },
+      "rate": 1000,
+      "shifted": false,
+      "p": 0.686209906910197
+    },
+    {
+      "context": {
+        "segment": "established",
+        "business_age_years": 12.0,
+        "monthly_turnover_cents": 3000000,
+        "existing_debt_burden": 0.18
+      },
+      "rate": 1000,
+      "shifted": true,
+      "p": 0.2558710560393294
+    },
+    {
+      "context": {
+        "segment": "new",
+        "business_age_years": 1.5,
+        "monthly_turnover_cents": 1800000,
+        "existing_debt_burden": 0.25
+      },
+      "rate": 800,
+      "shifted": false,
+      "p": 0.7143803380953052
+    },
+    {
+      "context": {
+        "segment": "new",
+        "business_age_years": 1.5,
+        "monthly_turnover_cents": 1800000,
+        "existing_debt_burden": 0.25
+      },
+      "rate": 800,
+      "shifted": true,
+      "p": 0.7244721153304362
+    },
+    {
+      "context": {
+        "segment": "new",
+        "business_age_years": 1.5,
+        "monthly_turnover_cents": 1800000,
+        "existing_debt_burden": 0.25
+      },
+      "rate": 900,
+      "shifted": false,
+      "p": 0.5041885106755069
+    },
+    {
+      "context": {
+        "segment": "new",
+        "business_age_years": 1.5,
+        "monthly_turnover_cents": 1800000,
+        "existing_debt_burden": 0.25
+      },
+      "rate": 900,
+      "shifted": true,
+      "p": 0.2925056697666128
+    },
+    {
+      "context": {
+        "segment": "new",
+        "business_age_years": 1.5,
+        "monthly_turnover_cents": 1800000,
+        "existing_debt_burden": 0.25
+      },
+      "rate": 1000,
+      "shifted": false,
+      "p": 0.2925056697666128
+    },
+    {
+      "context": {
+        "segment": "new",
+        "business_age_years": 1.5,
+        "monthly_turnover_cents": 1800000,
+        "existing_debt_burden": 0.25
+      },
+      "rate": 1000,
+      "shifted": true,
+      "p": 0.06103988121294746
+    },
+    {
+      "context": {
+        "segment": "restart",
+        "business_age_years": 5.0,
+        "monthly_turnover_cents": 500000,
+        "existing_debt_burden": 0.85
+      },
+      "rate": 800,
+      "shifted": false,
+      "p": 0.04643448245240573
+    },
+    {
+      "context": {
+        "segment": "restart",
+        "business_age_years": 5.0,
+        "monthly_turnover_cents": 500000,
+        "existing_debt_burden": 0.85
+      },
+      "rate": 800,
+      "shifted": true,
+      "p": 0.04869928860067857
+    },
+    {
+      "context": {
+        "segment": "restart",
+        "business_age_years": 5.0,
+        "monthly_turnover_cents": 500000,
+        "existing_debt_burden": 0.85
+      },
+      "rate": 900,
+      "shifted": false,
+      "p": 0.01941381155295545
+    },
+    {
+      "context": {
+        "segment": "restart",
+        "business_age_years": 5.0,
+        "monthly_turnover_cents": 500000,
+        "existing_debt_burden": 0.85
+      },
+      "rate": 900,
+      "shifted": true,
+      "p": 0.00798506060273473
+    },
+    {
+      "context": {
+        "segment": "restart",
+        "business_age_years": 5.0,
+        "monthly_turnover_cents": 500000,
+        "existing_debt_burden": 0.85
+      },
+      "rate": 1000,
+      "shifted": false,
+      "p": 0.00798506060273473
+    },
+    {
+      "context": {
+        "segment": "restart",
+        "business_age_years": 5.0,
+        "monthly_turnover_cents": 500000,
+        "existing_debt_burden": 0.85
+      },
+      "rate": 1000,
+      "shifted": true,
+      "p": 0.0012640547741681416
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "source_sha256": "0a36445804c4ed029ae8e3a300227afab84da750f66b293f93659177260d469e",
+  "fixture": "first six selection rows of generate(200,47,smooth)",
+  "probabilities": [
+    [
+      0.8,
+      0.7,
+      0.6
+    ],
+    [
+      0.7,
+      0.6,
+      0.4
+    ],
+    [
+      0.9,
+      0.5,
+      0.2
+    ],
+    [
+      0.7,
+      0.7,
+      0.7
+    ],
+    [
+      0.2,
+      0.6,
+      0.7
+    ],
+    [
+      0.8,
+      0.65,
+      0.45
+    ]
+  ],
+  "expected": {
+    "family": "smooth",
+    "model": "tabpfn-v2-512",
+    "policy": "greedy",
+    "n": 6,
+    "reviews": 0,
+    "recommendation_coverage": 1.0,
+    "expected_acceptance": 0.696976634619293,
+    "mean_expected_contribution_cents": 91673.87044043327,
+    "review_handling_cost_cents": 0,
+    "support_violations": 0,
+    "paired_difference_cents": -600.6294560568507,
+    "paired_bootstrap_low_cents": -12946.974580997869,
+    "paired_bootstrap_high_cents": 11096.938929980304
+  }
+}

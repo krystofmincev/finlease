@@ -6,7 +6,7 @@ This is a self-contained public summary of the implemented design, not a new exe
 
 Compare a finite, fictional rate menu against a 9% incumbent. Python calculates payments, response estimates, expected contribution and paired improvement under shared parameter draws. The cautious rule ranks supported challengers by q05 of improvement and changes only above the €20 margin; ties and the €2 numerical boundary follow the retained configuration. An unusable Laplace fit falls back to exact Beta. Insufficient support or a numerically borderline cautious comparison returns review. This is uncertainty about expected contribution, not individual Bernoulli outcome noise.
 
-Support separately checks mature response counts, observed cards/terms and fitted marginal input ranges. A narrow interval cannot create support. Exact Beta describes cohort-average probabilities under independent-cell assumptions. The pooled logistic model uses a proper-prior MAP fit and a checked Laplace approximation. Numerical stress failures remain reported; these checks do not certify every high-dimensional posterior.
+Support separately checks mature response counts, observed cards/terms and fitted marginal input ranges. A narrow interval cannot create support. Exact Beta describes cohort-average probabilities under independent-cell assumptions. The pooled logistic model uses a proper-prior MAP fit and a checked Laplace approximation. Stress-check results include approximations that exceeded the declared accuracy tolerance; these checks do not certify every high-dimensional posterior.
 
 ## Synthetic worlds
 

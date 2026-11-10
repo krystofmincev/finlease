@@ -17,7 +17,7 @@ In **Learning replay**, select **Response mechanism changes** under **Environmen
 
 1. [Architecture](ARCHITECTURE.md): follow factual events into frozen JSON, then the typed API and UI. Simulation truth is kept out of learner and serving imports.
 2. [Methods](METHODS.md): inspect finance conventions, the exact Beta reference, checked Laplace approximation, shared-draw improvement and separate support gate. The [specification summary](SPEC.md) records the frozen scope and data roles.
-3. [Verification](VERIFICATION.md): inspect the saved run, actual export, numerical failures and targeted packaging checks. [Setup](SETUP.md) separates viewing from full benchmark reproduction.
+3. [Verification](VERIFICATION.md): inspect the saved run, actual export, accuracy checks, known limitations, experiments that were not adopted and targeted packaging checks. [Setup](SETUP.md) separates viewing from full benchmark reproduction.
 
 A short introduction: “I built a lease decision lab to show when a higher expected return is enough to change an offer, and when uncertainty or missing evidence should keep the adviser from changing it. It combines a working Python/React product with reproducible synthetic experiments, including the cases where a more elaborate method did not earn its way into the decision workflow.”
 
